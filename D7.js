@@ -3,13 +3,13 @@
   prima e gli ultimi 3 della seconda. Converti la stringa risultante in maiuscolo e mostrala con un console.log().
 */
 function concatStringa(stringa1,stringa2) { 
-  const firstPart= stringa1.substring(0,2);
-  const secondPart= stringa2.slice(-3);
+  const firstPart= stringa1.substring(0,2);// seleziono i primi 2 caratteri della seconda stringa 
+  const secondPart= stringa2.slice(-3);// seleziona gli ultimi 3 caratteri della seconda stringa 
   const resultString = firstPart +secondPart ;
-  const uppercaseResult= resultString.toUpperCase();
+  const uppercaseResult= resultString.toUpperCase();// convero il risultato in maiuscolo 
    
 
-console.log("Esercizio 1: ",uppercaseResult);
+console.log("Esercizio 1: ",uppercaseResult);// mostro le due parole
 }
   concatStringa("buongiorno","buonanotte")
   
@@ -21,7 +21,7 @@ function addRandomElement() {
   
   const myArray=[];
   for (let i = 0; i < 10; i++) {
-    const randomNum= Math.floor(Math.random()*101);
+    const randomNum= Math.floor(Math.random()*101); // inserisco 101 percè arroondando per diffetto arriverebe fino a 99
     myArray.push(randomNum);
     
   }
@@ -41,48 +41,55 @@ console.log("esecizio 2:"+ addRandomElement());
 /* ESERCIZIO 4 (forEach)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
-const randomArr = [1,2,3,4,5,6,7,8,9,10];
+const randomArr = [1,2,3,43,5,6,75,8,9,10];
  let sum=0;
- let risultato1= randomArr.forEach((num)=> (sum+=num));
+ randomArr.forEach((num)=> (sum+=num));
 
- console.log("esercizio 4 ",risultato1);
+ console.log("esercizio 4 ",sum);
 /* ESERCIZIO 5 (reduce)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
 
 const numeri3=[1,2,3,4,5,6,7,8,9,10];
-function sumNum1(arrayNumeri) {
-  const sum=array.reduce((
-    accumulator,currentValue)=> accumulator+currentValue,0); // faccio partre da 0 poi ara le ssomme consecutive con i numei messi nell'array 
-  return sum;
-  
-}
-console.log("Esercizio 5:",sumNum1(arrayNumeri));
+
+  const sum1 =numeri3.reduce((
+    accumulator,currentValue)=> accumulator+currentValue,0); //  L'accumulator è 
+                                                            //il valore parziale della somma, mentre currentValue è l'elemento corrente dell'array durante l'iterazione.
+                                                             //Inizialmente, l'accumulator è impostato su 0 come specificato alla fine della chiamata di reduce (..., 0)). 
+                                                //Questo è il valore iniziale da cui inizia la somma.
+console.log("Esercizio 5:",sum1);
 
 /* ESERCIZIO 6 (map)
   Scrivi una funzione che, dato un array di soli numeri e un numero n come parametri, ritorni un secondo array con tutti i valori del precedente incrementati di n
 */
-let newArray=[];
-function es6(array,n){
-  return(newArray=array.map((arrayObj)=>arrayObj+n));
+
+const number3=[2,5,6,7,8,1,4]
+const multiplyNumbers=function (n) {
+  return number3.map((numbers)=> numbers*n)
+
+  
 }
-console.log("esercizio 6",es7(arrayNumeri, 3));
+
+console.log("eserzizi 6",multiplyNumbers(7));
+
 /* ESERCIZIO 7 (map)
   Scrivi una funzione che, dato un array di stringhe, ritorni un nuovo array contenente le lunghezze delle rispettive stringhe dell'array di partenza
   es.: ["EPICODE", "is", "great"] => [7, 2, 5]
 */
 
 const arrayEs7=["buongiorno", "a", "tutti"]
-const lenght=arrayEs7.map(function (word) {
+const lenght=arrayEs7.map( (word) =>word.length);
 
-  return word.length
-  
-})
-console.log("esercizio 7 ",lenght);
+console.log("Esercizio 7 ",lenght);
 /* ESERCIZIO 8 (forEach o for)
   Scrivi una funzione per creare un array contenente tutti i valori DISPARI da 1 a 99.
 */
-
+const array8=[]
+for (let i = 0; i < 100; i+=2) {
+  const oddNumbers = array8.push(i);
+  
+}
+console.log("esercizo 8 :" ,array8);
 /* Questo array di film verrà usato negli esercizi a seguire. Non modificarlo e scorri oltre per riprendere gli esercizi :) */
 const movies = [
   {
@@ -202,27 +209,51 @@ const movies = [
 /* ESERCIZIO 9 (forEach)
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
+function esercizio9(array) {
+  let oldestFilm =array[0].Year;
+  array.forEach((obj)=>{
+    if(obj.Year<oldestFilm){
+      oldestFilm= obj.Year;
+    }
+
+  })
+  return oldestFilm;
+}
+console.log("eSERCIZIO 9 ",esercizio9(movies));
 
 /* ESERCIZIO 10
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
+ const numeroFilm=(array)=>array.length;
+ console.log("esercizio 10 ",numeroFilm(movies));
 
 /* ESERCIZIO 11 (map)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
-
+const esercizio11=(array)=> array.map((obj)=>obj.Title);
+const titoloFilm=esercizio11(movies)
+console.log("Esercizio 11 ",titoloFilm);
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
+const esercizio12=(array)=> array.filter((obj)=>obj.Year>=2000)
+console.log("eserzizio 12 ",esercizio12(movies));
 
 /* ESERCIZIO 13 (reduce)
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
-
+const esercizio13 =(array)=> 
+array.reduce((accumulator,currentValue)=>accumulator+parseInt(currentValue.Year),0);
+console.log("esercizio 13 ",esercizio13(movies));
 /* ESERCIZIO 14 (find)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
+const esercizio14=(imdbID)=>movies.find((obj)=>obj.imdbID===imdbID);
+console.log("esercizio 14 ",esercizio14("ir6325365"));
 
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
 */
+const eserzizio15=(array,anno) =>
+array.findIndex((obj)=>parseInt(obj.Year)===anno);
+console.log("Esercizio 15 ",eserzizio15(movies, 2002));
